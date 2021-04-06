@@ -1,0 +1,10 @@
+{
+	"scope": "source.stata - string - meta.local - inner-commands",
+
+	"completions":
+	[
+		{ "trigger": "savefile\tSave file", "contents": "save \"${1:file}.dta\", replace" },
+		{ "trigger": "dofile\tRun noisily", "contents": "do \"${1:file}.do\""},
+		{ "trigger": "runfile\tRun silently", "contents": "run \"${1:file}.do\""}
+	]
+}

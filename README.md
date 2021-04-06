@@ -15,21 +15,21 @@ Since none of the plugins in the Package Control was specifically tailored for L
 This plugin is originally based on [StataEnhanced](https://github.com/andrewheiss/SublimeStataEnhanced), and also on [these notes](https://github.com/cwitt2013/SublimeText_Stata_Linux).
 
 This plugin aims for robustness over bells and whistles, and almost all the decisions were taken with that philosophy in mind.
-It basically creates a temporary file which is to be executed in Stata.
-The file is sent for execution by copying `do <filepath>` to the clipboard with `xclip`, and then pasting this string directly (and in the background) to Stata's command pane using `xdotool`.
+It basically creates a temporary file which is to be executed in Stata using 
+`xdotool`.
 
 
 ## Dependencies
 
 - `xdotool`
-- `xclip`
 
-These packages are likely already in your system.
-You can check their presence by typing each name with the `--version` option in your terminal.
-For example,
+This package is likely already in your system.
+You can check its presence by typing in your terminal 
+
 ```bash
 xdotool --version
 ```
+
 If the output is something like `xdotool version 3.20160805.1`, then it's installed.
 If you get an error, then the package is not installed.
 Use your system's package manager to install them.
@@ -37,12 +37,12 @@ For example,
 
 ### Arch(-based)
 ```bash
-sudo pacman -S xclip xdotool
+sudo pacman -S xdotool
 ```
 
 ### Ubuntu(-based)
 ```bash
-sudo apt install xclip xdotool
+sudo apt install xdotool
 ```
 etc.
 
@@ -93,7 +93,7 @@ Typing a backtick with a `word` selected will yield `` `word' ``.
 
 Make sure you have an instance of Stata *with GUI* open (`xstata`, or its various flavors); this plugin doesn't work with Stata's CLI.
 No additional configuration needs to be added to indicate version or flavor, since the program will detect any running instance automatically.
-If you have more than one instance of Stata open, the plugin will default to choosing the most recently opened one (internally, it looks for the last entry of `xdotool search --classname "stata"`).
+If you have more than one instance of Stata open, the plugin will default to choosing the most recently opened one (internally, it looks result of `xdotool search --name --limit 1 "Stata/(IC|SE|MP)? 1[0-9]\.[0-9]"`). It is hard to get predictable behavior of `xdotool search` and thus this package does not guarantee that it will always match the correct window when working with multiple Stata instances. 
 
 
 ## Known issues
