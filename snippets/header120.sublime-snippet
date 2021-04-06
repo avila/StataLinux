@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+// ---------------------------------------------------------------------------------------------------------------------
+// $1
+// ---------------------------------------------------------------------------------------------------------------------
+	
+]]></content>
+	<tabTrigger>h12</tabTrigger>
+	<scope>source.stata - string - meta.local - inner-commands</scope>
+	<description>Comment header</description>
+</snippet>

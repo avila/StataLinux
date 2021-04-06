@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+foreach $1 in $2 {
+	$3
+}
+]]></content>
+	<tabTrigger>forin</tabTrigger>
+	<scope>source.stata - string - meta.local - inner-commands</scope>
+	<description>Foreach numlist</description>
+</snippet>
+
+

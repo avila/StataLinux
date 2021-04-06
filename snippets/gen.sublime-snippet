@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+gen ${1:double} ${2:NAME} = ${3:EXP}
+]]></content>
+	<tabTrigger>gen</tabTrigger>
+	<scope>source.stata - string - meta.local - inner-commands</scope>
+	<description>Create variable</description>
+</snippet>
