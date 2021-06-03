@@ -382,7 +382,7 @@ contexts:
       scope: invalid.illegal.stray-bracket-end
     - match: '$'
       scope: invalid.illegal.stray-bracket-end
-    - match: ([-]?{{value_or_macro}})(\()([-]?{{value_or_macro}})(\))([-]?{{value_or_macro}})\s+({)
+    - match: ([-]?{{value_or_macro}})(\()([-]?{{value_or_macro}})(\))([-]?{{value_or_macro}})\s*({)
       captures:
         1: constant.numeric.integer
         2: support.constant.language.stata punctuation.accessor.stata
@@ -391,7 +391,7 @@ contexts:
         5: constant.numeric.integer
         6: support.constant.language.stata punctuation.accessor.stata
       set: inner-block
-    - match: ({{value_or_macro}})\s*(\/)\s*({{value_or_complex_macro}})\s+({)
+    - match: ({{value_or_macro}})\s*(\/)\s*({{value_or_complex_macro}})\s*({)
       captures:
         1: constant.numeric.integer
         2: support.constant.language.stata punctuation.accessor.stata
@@ -400,7 +400,7 @@ contexts:
       set: inner-block
 
   foreach:
-    - match: \b(foreach)\s+(\w+)\s+(of)\s+(loc|loca|local|glo|glob|globa|global)\s+(\w+)\s+({)
+    - match: \b(foreach)\s+(\w+)\s+(of)\s+(loc|loca|local|glo|glob|globa|global)\s+(\w+)\s*({)
       captures:
         1: keyword.control.flow.stata
         2: variable.function.stata
