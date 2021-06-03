@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-use ${2} using ${1}, clear
+use ${2:`variables'} using "${1:dataset}", clear
 ]]></content>
 	<tabTrigger>use-using</tabTrigger>
 	<scope>source.stata - string - meta.local</scope>
