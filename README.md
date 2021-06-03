@@ -27,10 +27,10 @@ This package is likely already in your system.
 You can check its presence by typing in your terminal 
 
 ```bash
-xdotool --version
+which xdotool
 ```
 
-If the output is something like `xdotool version 3.20160805.1`, then it's installed.
+If the output is something like `/usr/bin/xdotool`, then it's installed.
 If you get an error, then the package is not installed.
 Use your system's package manager to install them.
 For example,
