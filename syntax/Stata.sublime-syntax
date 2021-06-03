@@ -225,6 +225,7 @@ contexts:
         - match: '\*/'
           pop: true
         - include: comments_in
+        - include: block-comment
 
   comments_in:
     - match: \b(?i:todo|hack|xxx|bugbug)\b\:?
