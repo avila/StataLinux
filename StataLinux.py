@@ -58,7 +58,7 @@ class StataLinuxCommand(sublime_plugin.TextCommand):
 
 class StataLinuxAllCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        settings = sublime.load_settings(settingsfile)
+        # settings = sublime.load_settings("StataLinux (Linux).sublime-settings")
         # Switch focus to Stata or not after sending a command depending on a setting
         if settings.get('save_before_run_all'):
             self.view.run_command("save")
