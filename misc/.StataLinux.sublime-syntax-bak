@@ -433,7 +433,7 @@ contexts:
 # ---------------------------------------------------------------------------
 
   commands:
-    - match: '\b(set (?:{{set_subcmd}}))\s(off|on|double|float|\d+[kmg]?)'
+    - match: '\b(set (?:{{set_subcmd}}))\s(off|on|double|text|float|\d+[kmg]?)'
       captures:
         1: support.constant.language.stata
         2: constant.language

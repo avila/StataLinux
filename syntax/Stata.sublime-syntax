@@ -29,6 +29,7 @@ variables:
   #local_start: '(loc|loca|local)\s+(\w{1,31}|0)'
   value_or_macro: (?:\d+|[`]\w+\'|\$\w+)
   value_or_complex_macro: (?:\d+|[`]\w+\'|[`]=?[cer]\(\w+\)\'|\$\w+)
+  value_or_macro_or_scalar: (?:\d+|[`=]\w+\'|`=\w+\'|`=\w+\(\w*\)\'|\$\w+)
 
   types: (?:byte|int|long|float|double|str1|str2|str3|str4|str5|strL)
   comma: \s*(,)\s*
@@ -382,7 +383,7 @@ contexts:
       scope: invalid.illegal.stray-bracket-end
     - match: '$'
       scope: invalid.illegal.stray-bracket-end
-    - match: ([-]?{{value_or_macro}})(\()([-]?{{value_or_macro}})(\))([-]?{{value_or_macro}})\s*({)
+    - match: ([-]?{{value_or_macro_or_scalar}})(\()([-]?{{value_or_macro_or_scalar}})(\))([-]?{{value_or_macro_or_scalar}})\s*({)
       captures:
         1: constant.numeric.integer
         2: support.constant.language.stata punctuation.accessor.stata
@@ -391,16 +392,20 @@ contexts:
         5: constant.numeric.integer
         6: support.constant.language.stata punctuation.accessor.stata
       set: inner-block
-    - match: ({{value_or_macro}})\s*(\/)\s*({{value_or_complex_macro}})\s*({)
+    - match: ({{value_or_macro_or_scalar}})\s*(\/)\s*({{value_or_macro_or_scalar}})\s*({)
       captures:
         1: constant.numeric.integer
         2: support.constant.language.stata punctuation.accessor.stata
         3: constant.numeric.integer
         6: support.constant.language.stata punctuation.accessor.stata
       set: inner-block
+    - match: (.*)({) 
+      captures:
+        2: support.constant.language.stata punctuation.accessor.stata
+      set: inner-block
 
   foreach:
-    - match: \b(foreach)\s+(\w+)\s+(of)\s+(loc|loca|local|glo|glob|globa|global)\s+(\w+)\s*({)
+    - match: \b(foreach)\s+(\w+)\s+(of)\s+(loc|loca|local|glo|glob|globa|global)\s+(\w+|{{value_or_macro}})\s*({)
       captures:
         1: keyword.control.flow.stata
         2: variable.function.stata
@@ -438,7 +443,7 @@ contexts:
 # ---------------------------------------------------------------------------
 
   commands:
-    - match: '\b(set (?:{{set_subcmd}}))\s(off|on|double|float|\d+[kmg]?)'
+    - match: '\b(set (?:{{set_subcmd}}))\s(off|on|double|float|text|\d+[kmg]?)'
       captures:
         1: support.constant.language.stata
         2: constant.language
