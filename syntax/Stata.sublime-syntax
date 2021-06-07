@@ -414,12 +414,13 @@ contexts:
         5: variable.function.stata
         6: support.constant.language.stata punctuation.accessor.stata
       push: inner-block
-    - match: \b(foreach)\s+(\w+)\s+(of)\s+(var|varl|varli|varlis|varlist)\s+
+    - match: \b(foreach)\s+(\w+)\s+(of)\s+(varlist|varlis|varli|varl|var|numlist|numlis|numli|numl|num)\s*
       captures:
         1: keyword.control.flow.stata
         2: variable.function.stata
         3: keyword.control.flow.stata
         4: keyword.control.flow.stata
+        5: variable.function.stata
       push: foreach-content
     - match: \b(foreach)\s+(\w+)\s+(in)\s+
       captures:
@@ -429,6 +430,10 @@ contexts:
       push: foreach-content
 
   foreach-content:
+    - include: numbers
+    - include: varlist
+    #- include: numlist
+    - include: operators
     - match: '}'
       scope: invalid.illegal.stray-bracket-end
     - match: '$'
@@ -563,5 +568,9 @@ contexts:
         - match: '\)'
           scope: punctuation.section.parens.end meta.parens
           pop: true
-
+  varlist:
+    - match: (\w+)
+      scope: variable.parameter.stata
+  #numlist:
+  #  - match:
 # ---------------------------------------------------------------------------
